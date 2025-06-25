@@ -36,7 +36,7 @@ export default defineConfig([{
             version: "detect",
         },
     },
-
+    files: ["**/*.{js,jsx}"],
     rules: {
         "react/prop-types": "off",
         "react/react-in-jsx-scope": "off",
