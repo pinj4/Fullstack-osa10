@@ -1,5 +1,5 @@
 import Constants from 'expo-constants';
-import { View, StyleSheet, Pressable } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import { Link } from 'react-router-native';
 
 import Text from './Text';
@@ -20,6 +20,9 @@ const styles = StyleSheet.create({
       backgroundColor: theme.colors.secondary,
       borderRadius: 5,
       overflow: 'hidden',
+    },
+    link: {
+      paddingRight: 50
     }
   })
 
@@ -31,12 +34,14 @@ const onPressFunction = () => {
 const AppBar = () => {
   return (
     <View style={styles.container}>
-    <Link to="/">
-      <Text fontWeight="bold" fontSize="title" color="textSecondary">Repositories</Text>
-    </Link>
-    <Link style={styles.signInBox} to="/signin">
-      <Text fontWeight="bold" fontSize="subheading" color="textSecondary">Sign in</Text>
-    </Link>
+      <ScrollView horizontal>
+        <Link style={styles.link} to="/">
+          <Text fontWeight="bold" fontSize="title" color="textSecondary">Repositories</Text>
+        </Link>
+        <Link style={styles.signInBox} to="/signin">
+          <Text fontWeight="bold" fontSize="subheading" color="textSecondary">Sign in</Text>
+        </Link>
+      </ScrollView>
     </View>
   );
 };
