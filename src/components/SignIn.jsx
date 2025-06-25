@@ -1,36 +1,8 @@
-import Constants from 'expo-constants';
-import { TextInput, Pressable, View, StyleSheet } from 'react-native';
+import { TextInput, Pressable, View } from 'react-native';
 import { useFormik } from 'formik';
 
 import Text from './Text';
-import theme from '../theme';
-
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: Constants.statusBarHeight+20,
-    padding: 20,
-    backgroundColor: theme.colors.background, 
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    rowGap: 30,
-  },
-  inputBox: {
-    backgroundColor: 'white', 
-    fontSize: theme.fontSizes.subheading,
-    padding: 20,
-    borderColor: theme.colors.secondary,
-    borderWidth: 1,
-  },
-  signInBox: {
-    display: 'flex',
-    fontSize: theme.fontSizes.subheading,
-    flex: 0,
-    padding: 10,
-    backgroundColor: theme.colors.secondary,
-    borderRadius: 5,
-    overflow: 'hidden',
-  },
-});
+import { styles } from '../style';
 
 const initialValues = {
   username: '',
@@ -44,7 +16,7 @@ const SignInForm = ({ onSubmit }) => {
   });
 
   return (
-    <View style= {styles.container}>
+    <View style= {styles.signInContainer}>
       <TextInput
         style= {styles.inputBox}
         placeholder="username"
@@ -58,7 +30,7 @@ const SignInForm = ({ onSubmit }) => {
         value={formik.values.password}
         onChangeText={formik.handleChange('password')}
       />
-      <Pressable style= {styles.signInBox} onPress={formik.handleSubmit}>
+      <Pressable style= {styles.signInSubmit} onPress={formik.handleSubmit}>
         <Text fontWeight='bold' color='textSecondary' >Sign in</Text>
       </Pressable>
     </View>
@@ -68,11 +40,11 @@ const SignInForm = ({ onSubmit }) => {
 
 const SignIn = () => {
   const onSubmit = values => {
-    const username = parseFloat(values.username);
-    const password  = parseFloat(values.password);
+    parseFloat(values.username);
+    parseFloat(values.password);
     console.log(values);
   
-    if (!isNaN(username) && !isNaN(password)) {
+    if (values.username === '' | values.password === '') {
       console.log(`Add username and/or password`);
     }
   };
