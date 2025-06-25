@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
   repLink: {
     paddingRight: 50
   }, // appBar link back to repositories page
-  
+
   // STYLES FOR MAIN
   mainContainer: {
     flexGrow: 1,
@@ -95,7 +95,14 @@ export const styles = StyleSheet.create({
     padding: 20,
     borderColor: theme.colors.secondary,
     borderWidth: 1,
-  },
+  }, // input box for username and password
+  inputBoxError: {
+    backgroundColor: 'white', 
+    fontSize: theme.fontSizes.subheading,
+    padding: 20,
+    borderColor: 'red',
+    borderWidth: 1,
+  }, // input box for username/password when it is missing
   signInSubmit: {
     display: 'flex',
     fontSize: theme.fontSizes.subheading,
