@@ -15,7 +15,7 @@ const App = () => {
       </NativeRouter>
       <StatusBar style="auto" />
     </>
-  )
+  );
 };
 
 export default App;
