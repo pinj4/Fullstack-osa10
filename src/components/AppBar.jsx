@@ -1,5 +1,7 @@
 import Constants from 'expo-constants';
 import { View, StyleSheet, Pressable } from 'react-native';
+import { Link } from 'react-router-native';
+
 import Text from './Text';
 import theme from '../theme';
 
@@ -8,7 +10,17 @@ const styles = StyleSheet.create({
       paddingTop: Constants.statusBarHeight+20,
       padding: 20,
       backgroundColor: theme.colors.appBar,
+      flexDirection: 'row',
+      justifyContent: 'space-between'
     },
+    signInBox: {
+      display: 'flex',
+      flex: 0,
+      padding: 3,
+      backgroundColor: theme.colors.secondary,
+      borderRadius: 5,
+      overflow: 'hidden',
+    }
   })
 
 
@@ -17,11 +29,16 @@ const onPressFunction = () => {
 };
 
 const AppBar = () => {
-  return <View style={styles.container}>{
-    <Pressable onPress={onPressFunction}>
+  return (
+    <View style={styles.container}>
+    <Link to="/">
       <Text fontWeight="bold" fontSize="title" color="textSecondary">Repositories</Text>
-    </Pressable>
-  }</View>;
+    </Link>
+    <Link style={styles.signInBox} to="/signin">
+      <Text fontWeight="bold" fontSize="subheading" color="textSecondary">Sign in</Text>
+    </Link>
+    </View>
+  );
 };
 
 export default AppBar;
