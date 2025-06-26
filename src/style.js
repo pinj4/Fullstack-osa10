@@ -79,6 +79,9 @@ export const styles = StyleSheet.create({
     width: 70,
     height: 70,
   }, // for author's profile picture
+  separator: {
+    height: 20,
+  }, // to separate repositories
 
   // STYLES FOR SIGN IN PAGE
   signInContainer: {
