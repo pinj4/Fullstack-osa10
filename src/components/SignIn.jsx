@@ -5,6 +5,8 @@ import * as yup from 'yup';
 import Text from './Text';
 import { styles } from '../style';
 
+import useSignIn from '../hooks/signIn';
+
 const initialValues = {
   username: '',
   password: '',
@@ -60,18 +62,20 @@ const SignInForm = ({ onSubmit }) => {
   );
 };
 
-
 const SignIn = () => {
-  const onSubmit = values => {
-    parseFloat(values.username);
-    parseFloat(values.password);
-    console.log(values);
-  
-    if (values.username === '' | values.password === '') {
-      console.log(`Add username and/or password`);
+  const [signIn] = useSignIn();
+
+  const onSubmit = async (values) => {
+    const { username, password } = values;
+
+    try {
+      const { data } = await signIn({ username, password });
+      console.log(data);
+    } catch (e) {
+      console.log(e);
     }
   };
-  
+
   return <SignInForm onSubmit={onSubmit} />;
 };
   
